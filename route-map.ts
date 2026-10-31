@@ -13,13 +13,14 @@ export interface VerifiedMapRoute {
   destination: GeoPoint;
 }
 
-const bounds = { minLatitude: 40, maxLatitude: 82, minLongitude: 20, maxLongitude: 180 };
+const bounds = { minLatitude: 40, maxLatitude: 82, minLongitude: 18.5, maxLongitude: 200 };
 const width = 820;
 const height = 360;
 
 export function projectRussiaPoint(point: GeoPoint): { x: number; y: number } {
+  const mapLongitude = point.longitude < 0 ? point.longitude + 360 : point.longitude;
   return {
-    x: ((point.longitude - bounds.minLongitude) / (bounds.maxLongitude - bounds.minLongitude)) * width,
+    x: ((mapLongitude - bounds.minLongitude) / (bounds.maxLongitude - bounds.minLongitude)) * width,
     y: ((bounds.maxLatitude - point.latitude) / (bounds.maxLatitude - bounds.minLatitude)) * height,
   };
 }

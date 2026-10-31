@@ -18,3 +18,35 @@
 @media(max-width:900px){.workspace-grid{grid-template-columns:1fr}.timeline-card{min-height:260px}.timeline-empty{min-height:120px}.hero .scene,.hero .radar,.hero-mini-map,.hero-livery,.hero-compare,.hero-sources{right:8px;width:43%;opacity:.82}.source-row{grid-template-columns:1.6fr 1fr 1.2fr}.source-row>*:last-child{display:none}}
 @media(max-width:650px){.hero .scene,.hero .radar,.hero-mini-map,.hero-livery,.hero-compare,.hero-sources{right:-40px;top:51px;width:57%;height:178px;opacity:.36}.hero .aircraft-model{width:120%;left:-5%}.hero-copy-block{z-index:2}.workspace-grid{margin-top:13px}.aircraft-scene{height:230px}.fleet-card>.card-kicker{left:12px;top:12px}.plane-readout{display:none}.fleet-caption{padding:0 12px;gap:13px}.fleet-caption span{font-size:7px}.fleet-caption button{font-size:9px}.timeline-card{padding:16px;min-height:250px}.route-card,.compare-card,.sources-card{padding:15px;margin-top:13px}.map-stage{height:310px}.map-toolbar{align-items:flex-start;gap:8px;flex-direction:column}.russia-map{width:145%;left:-22%;height:85%;top:9%}.map-empty{top:59%;padding:12px}.map-empty b{font-size:10px}.map-foot{font-size:6px}.route-note{font-size:9px;align-items:flex-start}.hangar{height:220px}.compare-selectors{grid-template-columns:1fr 28px 1fr;gap:7px}.compare-selectors label:last-child{grid-column:1/-1}.compare-selectors select{font-size:9px}.compare-empty{height:190px;padding:12px}.source-row{grid-template-columns:1.5fr 1fr;gap:8px}.source-row>*:nth-child(3),.source-head>*:nth-child(3){display:none}.source-row{min-height:59px}.source-head{font-size:7px}.source-name{gap:7px}.source-name b{font-size:9px}.source-name small{font-size:8px}.source-symbol{height:24px;width:24px}.source-status{font-size:8px}.livery-types{padding:15px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}}
+
+/* Final layout corrections: keep visual children scoped to the hero, never the hero section itself. */
+.hero.hero-sources,.hero.hero-compare{position:relative!important;inset:auto!important;width:100%!important;height:240px!important;min-height:240px!important;overflow:hidden!important;}
+.hero .hero-visual{position:absolute;right:42px;top:8px;width:45%;height:220px;z-index:1;display:flex;align-items:center;justify-content:center;animation:scene-arrive .85s cubic-bezier(.16,.8,.24,1) both;}
+.hero.hero-sources .hero-copy-block{width:52%;max-width:52%;}
+.hero.hero-sources h1{font-size:30px;line-height:1.12;}
+.hero.hero-sources .hero-copy{max-width:470px;}
+.hero .visual-route{overflow:hidden;opacity:.9;}
+.hero .visual-route svg{position:absolute;width:92%;height:90%;fill:#183046;stroke:#5381a0;stroke-width:1;}
+.hero .visual-route .mini-route{fill:none;stroke:#73c4ea;stroke-dasharray:3 5;stroke-width:1.5;animation:route-dash 8s linear infinite;}
+.hero .visual-livery{color:#83b9d8;}
+.hero .visual-livery>svg{transform:rotate(-24deg) perspective(400px) rotateX(25deg);filter:drop-shadow(0 0 18px #56a8d566);}
+.hero .visual-compare{gap:18px;color:#84a4bb;font:18px var(--mono);}
+.hero .visual-compare small{position:absolute;bottom:20px;right:17px;color:#728da2;font:8px var(--mono);letter-spacing:1px;}
+.hero .visual-sources{gap:13px;}
+.hero .visual-sources>div{width:49px;height:49px;border:1px solid #3e6984;border-radius:8px;display:grid;place-items:center;color:#8ac4e4;background:#122439;box-shadow:0 0 25px #23507138;}
+.hero .visual-sources>span{color:#8098aa;font:8px var(--mono);letter-spacing:1px;}
+.hero .visual-sources>i{position:absolute;width:5px;height:5px;border-radius:50%;background:#78c5e9;box-shadow:0 0 10px #78c5e9;}
+.hero .visual-sources>i:nth-of-type(1){top:32px;right:60px}.hero .visual-sources>i:nth-of-type(2){bottom:48px;left:80px}.hero .visual-sources>i:nth-of-type(3){top:58px;left:45px}
+.aircraft-model-viewer,.aircraft-model-loading{display:block;width:100%;height:100%;min-height:180px;background:transparent;--poster-color:transparent;--progress-bar-color:#79c6eb;--progress-mask:#0b1420;--progress-bar-height:2px;}
+.aircraft-model-loading{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:9px;color:#83b9d8;font:8px var(--mono);letter-spacing:.8px;}
+.aircraft-model-loading span{height:20px;width:20px;border:1px solid #365d78;border-top-color:#9ad8f7;border-radius:50%;animation:spin .8s linear infinite;}
+.model-controls-hint{position:absolute;right:15px;bottom:14px;color:#59758a;font:7px var(--mono);letter-spacing:.7px;pointer-events:none;}
+.aircraft-model{z-index:1;}
+.aircraft-scene model-viewer{position:relative;z-index:1;}
+.map-foot span:first-child{letter-spacing:.45px;}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media(max-width:650px){.hero .hero-visual{right:-40px;top:51px;width:57%;height:178px;opacity:.36}.hero.hero-sources{height:270px!important;min-height:270px!important}.hero.hero-sources .hero-copy-block{width:78%;max-width:78%;}.hero.hero-sources h1{font-size:25px}.hero .visual-sources{opacity:.48}.model-controls-hint{display:none}.aircraft-model-loading{min-height:140px}}
+.asset-credit{margin-left:auto;color:#8bcaf0;text-decoration:none;font:7px var(--mono);letter-spacing:.3px}.asset-credit:hover{text-decoration:underline;color:#c4e8fb}
+.asset-credits{display:grid;gap:7px;margin-top:16px;padding-top:14px;border-top:1px solid #1b2937;color:#8598aa;font-size:9px;line-height:1.5}.asset-credits>b{margin-bottom:2px;color:#6d8397;font:8px var(--mono);letter-spacing:.8px}.asset-credits a{color:#8bcaf0;text-decoration:none}.asset-credits a:hover{text-decoration:underline}
+.aircraft-scene .aircraft-model-viewer{width:100%;height:100%;}
+.map-wrap{margin-top:17px}.map-wrap .map-stage{margin-top:0}.map-data-empty{display:flex;align-items:center;gap:11px;padding:12px 14px;margin-top:9px;border:1px dashed #294054;border-radius:4px;background:#0a131d}.map-data-empty>div{display:grid;gap:4px}.map-data-empty b{font:500 10px var(--sans);color:#c9d8e3}.map-data-empty>div span{font-size:9px;color:#788da1}.map-empty-count{margin-left:auto;color:#6c8398;font:8px var(--mono);letter-spacing:.6px}.map-empty-icon{height:30px;width:30px;flex:0 0 30px;display:grid;place-items:center;border:1px solid #34566d;border-radius:50%;color:#81c4e7;background:#112338}
