@@ -170,5 +170,77 @@
       { "name": "Red Wings — официальный пресс-релиз", "url": "https://flyredwings.com/press/news/v-park-samoletov-red-wings-postupil-vtoroj-obnovlennyj-tu-214/", "publishedAt": "2025-09-08", "kind": "Первичный источник: авиакомпания" },
       { "name": "Интерфакс — Red Wings получила второй Ту-214", "url": "https://www.interfax.ru/amp/1046111", "publishedAt": "2025-09-08", "kind": "Независимое информагентство" }
     ]
+  },
+  {
+    "id": "rossiya-lizaalert-livery-2025-12-22",
+    "title": "«Россия» выпустила SSJ-100 в ливрее поискового отряда «ЛизаАлерт»",
+    "description": "SSJ-100 RA-89128 получил тематическую окраску в рамках партнёрства перевозчика с поисково-спасательным отрядом. Первый рейс FV6216 по маршруту Санкт-Петербург — Москва состоялся 22 декабря 2025 года.",
+    "category": "LIVERY",
+    "eventType": "new_special_livery",
+    "airline": "Россия",
+    "eventDate": "2025-12-22",
+    "detectedAt": "2025-12-22",
+    "status": "verified",
+    "isHistorical": true,
+    "confidence": "high",
+    "aircraft": { "type": "SSJ-100", "registration": "RA-89128" },
+    "sources": [
+      { "name": "Авиакомпания «Россия» — пресс-релиз", "url": "https://www.rossiya-airlines.ru/about/news/rossiya_predstavila_samolyet_v_unikalnoy_livree_otryada_lizaalert/?special_version=N", "publishedAt": "2025-12-22", "kind": "Первичный источник: авиакомпания" },
+      { "name": "Фонтанка — первый рейс самолёта «ЛизаАлерт»", "url": "https://www.fontanka.ru/2025/12/22/76183557/", "publishedAt": "2025-12-22", "kind": "Независимое подтверждение" }
+    ]
+  },
+  {
+    "id": "yamal-a320-new-livery-2025-11-22",
+    "title": "«Ямал» вывел первый Airbus A320 в новой ливрее",
+    "description": "Первый регулярный рейс обновлённого A320 прошёл 22 ноября 2025 года по маршруту Москва — Новый Уренгой. В оформлении использованы образ белого медведя и мотив Полярной звезды; это фактический ввод ливреи, а не макет.",
+    "category": "LIVERY",
+    "eventType": "new_aircraft_livery",
+    "airline": "Ямал",
+    "eventDate": "2025-11-22",
+    "detectedAt": "2025-11-24",
+    "status": "verified",
+    "isHistorical": true,
+    "confidence": "high",
+    "aircraft": { "type": "Airbus A320" },
+    "sources": [
+      { "name": "Авиакомпания «Ямал» — о новой ливрее A320", "url": "https://yamalaero.ru/about/news/yamal-unveiled-the-first-airbus-a320-in-the-airlines-new-livery/", "publishedAt": "2025-11-22", "kind": "Первичный источник: авиакомпания" },
+      { "name": "AEX.RU — первый регулярный рейс A320", "url": "https://www.aex.ru/news/2025/11/24/290116/", "publishedAt": "2025-11-24", "kind": "Независимое отраслевое издание" }
+    ]
+  },
+  {
+    "id": "yamal-ssj100-brand-refresh-2025-10-22",
+    "title": "«Ямал» начал обновлять символику флота с SSJ-100",
+    "description": "Первый Sukhoi Superjet 100 с обновлённым монохромным логотипом выполнил рейс Салехард — Москва 22 октября 2025 года. Перевозчик описал это как первый этап ребрендинга; базовый внешний облик SSJ-100 сохранился.",
+    "category": "LIVERY",
+    "eventType": "aircraft_brand_refresh",
+    "airline": "Ямал",
+    "eventDate": "2025-10-22",
+    "detectedAt": "2025-10-22",
+    "status": "verified",
+    "isHistorical": true,
+    "confidence": "high",
+    "aircraft": { "type": "Sukhoi Superjet 100" },
+    "sources": [
+      { "name": "Авиакомпания «Ямал» — о ребрендинге", "url": "https://yamalaero.ru/about/news/the-rebranding-of-yamal-airlines-preserves-history-and-opens-up-new-horizons/", "publishedAt": "2025-10-20", "kind": "Первичный источник: авиакомпания" },
+      { "name": "Ямал-Медиа — первый SSJ-100 с новым логотипом", "url": "https://yamal-media.ru/news/pervyj-sukhoi-superjet-100-aviakompanii-jamal-poluchil-novyj-logotip", "publishedAt": "2025-10-22", "kind": "Независимое региональное СМИ" }
+    ]
+  },
+  {
+    "id": "iraero-chita-blagoveshchensk-sanya-2026-10-21",
+    "title": "IRAERO объявила рейсы из Читы и Благовещенска в Санью",
+    "description": "Продажа открыта на рейсы с 10 декабря 2026 года: по четвергам из Читы и по пятницам из Благовещенска. На обоих направлениях запланирована техническая посадка в Хэфэе; это анонс расписания, будущий запуск ещё не состоялся.",
+    "category": "ROUTE",
+    "eventType": "route_announced",
+    "airline": "IRAERO",
+    "eventDate": "2026-10-21",
+    "detectedAt": "2026-10-21",
+    "status": "verified",
+    "isHistorical": false,
+    "confidence": "high",
+    "route": { "originName": "Чита и Благовещенск", "destinationName": "Санья", "plannedStartDate": "2026-12-10", "aircraftType": "Sukhoi Superjet 100", "mapVisible": false },
+    "sources": [
+      { "name": "IRAERO — объявление новых рейсов в Санью", "url": "https://iraero.ru/about/news/iraero-rasshiryaet-marshrutnuyu-set-novye-pryamye-reysy-v-sanyu-iz-chity-i-blagoveshchenska/", "publishedAt": "2026-10-21", "kind": "Первичный источник: авиакомпания" },
+      { "name": "Новости на Амуре — рейс из Благовещенска", "url": "https://www.amurnews.ru/2026/10/%D0%B2-%D0%B1%D0%BB%D0%B0%D0%B3%D0%BE%D0%B2%D0%B5%D1%89%D0%B5%D0%BD%D1%81%D0%BA%D0%B5-%D0%B7%D0%B0%D0%BF%D1%83%D1%81%D1%82%D0%B8%D0%BB%D0%B8-%D0%BF%D1%80%D1%8F%D0%BC%D0%BE%D0%B9-%D1%80%D0%B5%D0%B9/", "publishedAt": "2026-10-22", "kind": "Независимое региональное подтверждение" }
+    ]
   }
 ]
