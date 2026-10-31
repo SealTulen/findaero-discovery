@@ -1,13 +1,12 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { createElement, useEffect, useMemo, useState } from "react";
 import {
   Activity, ArrowDownUp, ArrowRight, Bell, ChevronDown, CircleHelp,
   Clock3, Compass, Database, Plane, Radio, Search, ShieldCheck,
   SlidersHorizontal, Sparkles, MapPin, Layers3, ExternalLink,
 } from "lucide-react";
 import { projectRussiaPoint, routeArc, type VerifiedMapRoute } from "@/lib/route-map";
-import { AircraftModel } from "@/components/AircraftModel";
 
 const sections = ["CHANGELOG", "FLEET", "LIVERIES", "ROUTES", "COMPARE", "SOURCES"] as const;
 type Section = (typeof sections)[number];
@@ -22,6 +21,33 @@ const sectionCopy: Record<Section, { title: string; subtitle: string; eyebrow: s
 };
 
 const airlines = ["Аэрофлот", "Россия", "Победа", "S7 Airlines", "UTair", "Nordwind", "Smartavia", "Red Wings", "Azur Air", "Уральские авиалинии", "Ямал", "Северсталь", "Алроса", "Ижавиа", "Газпром авиа", "РусЛайн"];
+
+function AircraftModel({ src, alt }: { src: string; alt: string }) {
+  const [viewerReady, setViewerReady] = useState(false);
+  useEffect(() => {
+    if (customElements.get("model-viewer")) { setViewerReady(true); return; }
+    let script = document.querySelector<HTMLScriptElement>("script[data-aircraft-model-viewer]");
+    if (!script) {
+      script = document.createElement("script");
+      script.type = "module";
+      script.src = "https://ajax.googleapis.com/ajax/libs/model-viewer/4.4.0/model-viewer.min.js";
+      script.dataset.aircraftModelViewer = "true";
+      document.head.appendChild(script);
+    }
+    const ready = () => setViewerReady(true);
+    script.addEventListener("load", ready);
+    customElements.whenDefined("model-viewer").then(ready);
+    return () => script?.removeEventListener("load", ready);
+  }, []);
+  if (!viewerReady) return <div className="aircraft-model-loading"><span/><small>ЗАГРУЖАЕМ 3D-МОДЕЛЬ</small></div>;
+  const ModelViewer = "model-viewer" as any;
+  return createElement(ModelViewer, {
+    className: "aircraft-model-viewer", src, alt,
+    "camera-controls": "true", "auto-rotate": "true", "rotation-per-second": "7deg",
+    "camera-orbit": "35deg 68deg auto", "field-of-view": "27deg",
+    "shadow-intensity": "0.8", exposure: "1.1", "interaction-prompt": "none", "touch-action": "pan-y",
+  });
+}
 
 function AircraftScene() {
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
