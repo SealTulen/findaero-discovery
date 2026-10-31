@@ -2,8 +2,42 @@
   "name": "findaero-changelog",
   "version": "0.1.0",
   "private": true,
-  "scripts": { "predev": "node generate-assets.mjs", "dev": "next dev", "prebuild": "node generate-assets.mjs", "build": "next build", "start": "next start", "lint": "next lint", "db:generate": "prisma generate", "db:migrate": "prisma migrate deploy", "db:seed": "prisma db seed" },
-  "dependencies": { "@google/model-viewer": "4.4.0", "@prisma/client": "6.19.3", "next": "14.2.31", "react": "^18.3.1", "react-dom": "^18.3.1", "lucide-react": "^0.468.0" },
-  "devDependencies": { "@types/node": "^22.10.2", "@types/react": "^18.3.18", "prisma": "6.19.3", "typescript": "^5.7.2" },
-  "prisma": { "seed": "node prisma/seed.mjs" }
+  "scripts": {
+    "predev": "node scripts/validate-news.mjs && node generate-assets.mjs",
+    "dev": "next dev",
+    "prebuild": "node scripts/validate-news.mjs && node generate-assets.mjs",
+    "build": "next build --webpack",
+    "postbuild": "node scripts/validate-export.mjs",
+    "start": "next start",
+    "validate:news": "node scripts/validate-news.mjs",
+    "validate:export": "node scripts/validate-export.mjs",
+    "db:generate": "prisma generate",
+    "db:migrate": "prisma migrate deploy",
+    "db:seed": "prisma db seed"
+  },
+  "dependencies": {
+    "@google/model-viewer": "4.4.0",
+    "@prisma/adapter-pg": "7.10.1",
+    "@prisma/client": "7.10.1",
+    "dotenv": "^18.0.9",
+    "lucide-react": "^0.468.0",
+    "next": "16.4.3",
+    "pg": "^8.23.1",
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "prisma": "7.10.1",
+    "tsx": "^4.23.15",
+    "typescript": "^5.7.2"
+  },
+  "allowScripts": {
+    "@prisma/client@7.10.1": true,
+    "prisma@7.10.1": true,
+    "@prisma/engines@7.10.1": true,
+    "esbuild@0.28.2": true
+  }
 }

@@ -1,0 +1,101 @@
+[
+  {
+    "id": "red-wings",
+    "name": "Red Wings — пресс-центр",
+    "type": "Авиакомпания",
+    "url": "https://flyredwings.com/press/news/",
+    "termsUrl": "https://flyredwings.com/",
+    "status": "Ручная проверка",
+    "limitations": "События сверяются с публикациями перевозчика; автоматический сбор и повторное использование материалов не настроены."
+  },
+  {
+    "id": "s7",
+    "name": "S7 Airlines — новости",
+    "type": "Авиакомпания",
+    "url": "https://news.s7.ru/",
+    "termsUrl": "https://www.s7.ru/",
+    "status": "Не подключён",
+    "limitations": "Новости доступны на официальном сайте; API и условия автоматического сбора не подтверждены."
+  },
+  {
+    "id": "aeroflot",
+    "name": "Аэрофлот — новости компании",
+    "type": "Авиакомпания",
+    "url": "https://www.aeroflot.ru/news",
+    "termsUrl": "https://www.aeroflot.ru/info/website/",
+    "status": "Требуется разрешение",
+    "limitations": "В правилах сайта указано, что повторное использование материалов требует предварительного письменного разрешения. Автоматический сбор отключён."
+  },
+  {
+    "id": "rossiya",
+    "name": "Авиакомпания Россия — новости",
+    "type": "Авиакомпания",
+    "url": "https://www.rossiya-airlines.ru/about/news/",
+    "termsUrl": "https://www.rossiya-airlines.ru/",
+    "status": "Не подключён",
+    "limitations": "Официальные публикации доступны; разрешение и технические условия автоматического использования не проверены."
+  },
+  {
+    "id": "rosaviatsiya",
+    "name": "Росавиация — новости и документы",
+    "type": "Государственный источник",
+    "url": "https://www.favt.ru/",
+    "termsUrl": "https://www.favt.ru/",
+    "status": "Не подключён",
+    "limitations": "Используется как направление для ручной проверки; автоматический интерфейс и условия повторного использования не подтверждены."
+  },
+  {
+    "id": "astrakhan-airport-news",
+    "name": "Астрахань.ру — авиационные сообщения",
+    "type": "Региональное СМИ",
+    "url": "https://astrakhan.su/news/society/",
+    "termsUrl": "https://astrakhan.su/",
+    "status": "Ручная проверка",
+    "limitations": "Используется для независимой сверки отдельных фактов; автоматический сбор и копирование текстов отключены."
+  },
+  {
+    "id": "mintrans-russia",
+    "name": "Минтранс России — новости",
+    "type": "Государственный источник",
+    "url": "https://mintrans.gov.ru/eye/press-center/news/13014",
+    "termsUrl": "https://mintrans.gov.ru/",
+    "status": "Ручная проверка",
+    "limitations": "Используется для фактчекинга публичных объявлений; автоматический сбор не настроен."
+  },
+  {
+    "id": "kommersant",
+    "name": "Коммерсантъ — авиация и бизнес",
+    "type": "Деловое СМИ",
+    "url": "https://www.kommersant.ru/doc/9077380",
+    "termsUrl": "https://www.kommersant.ru/doc/",
+    "status": "Ручная проверка",
+    "limitations": "Используется как независимый источник; публикуются только краткие пересказы и ссылки."
+  },
+  {
+    "id": "belta",
+    "name": "БЕЛТА — транспортные новости",
+    "type": "Государственное информационное агентство Беларуси",
+    "url": "https://belrus.ru/info/bolshe-marshrutov-i-edinyy-bilet-belavia-i-red-wings-rasshiryayut-sotrudnichestvo/",
+    "termsUrl": "https://belta.by/",
+    "status": "Ручная проверка",
+    "limitations": "Используется для независимой сверки; автоматический сбор и копирование материалов не настроены."
+  },
+  {
+    "id": "novosibirsk-news",
+    "name": "Новосибирские новости",
+    "type": "Региональное СМИ",
+    "url": "https://nsknews.info/news/pridumat-livreiu-dlia-novogo-samoleta-tango-predlozila-novosibircam-s7",
+    "termsUrl": "https://nsknews.info/",
+    "status": "Ручная проверка",
+    "limitations": "Используется для независимой сверки отдельных фактов; автоматический сбор и копирование материалов не настроены."
+  },
+  {
+    "id": "interfax-aviation",
+    "name": "Интерфакс — транспорт и авиация",
+    "type": "Информационное агентство",
+    "url": "https://www.interfax.ru/amp/1046111",
+    "termsUrl": "https://www.interfax.ru/",
+    "status": "Ручная проверка",
+    "limitations": "Используется как независимый источник; автоматический сбор и копирование материалов не настроены."
+  }
+]

@@ -1,0 +1,174 @@
+[
+  {
+    "id": "red-wings-ekaterinburg-astrakhan-2026-06-02",
+    "title": "Red Wings возобновила регулярные рейсы Екатеринбург — Астрахань",
+    "description": "Первый рейс после перерыва выполнен 2 июня 2026 года на SSJ-100. Авиакомпания сообщила о еженедельном расписании в июне и увеличении частоты до двух рейсов в неделю с июля.",
+    "category": "ROUTE",
+    "eventType": "route_resumed",
+    "airline": "Red Wings",
+    "eventDate": "2026-06-02",
+    "detectedAt": "2026-06-03",
+    "status": "verified",
+    "isHistorical": true,
+    "confidence": "high",
+    "route": {
+      "originName": "Екатеринбург",
+      "destinationName": "Астрахань",
+      "origin": { "latitude": 56.7431, "longitude": 60.8027 },
+      "destination": { "latitude": 46.2833, "longitude": 48.0063 },
+      "mapVisible": true
+    },
+    "sources": [
+      {
+        "name": "Red Wings — пресс-релиз",
+        "url": "https://flyredwings.com/press/news/red-wings-nachala-letat-iz-ekaterinburga-v-astraxan/",
+        "publishedAt": "2026-06-03",
+        "kind": "Первичный источник: перевозчик"
+      },
+      {
+        "name": "Astrakhan.su — прибытие первого рейса",
+        "url": "https://astrakhan.su/news/society/iz-astrahani-vozobnovili-pryamye-aviarejsy-v-ekaterinburg/",
+        "publishedAt": "2026-06-03",
+        "kind": "Независимое подтверждение"
+      }
+    ]
+  },
+  {
+    "id": "red-wings-ekaterinburg-urgench-2026-04-14",
+    "title": "Red Wings открыла регулярное направление Екатеринбург — Ургенч",
+    "description": "Первый рейс из Кольцово в Ургенч состоялся 14 апреля 2026 года. Направление выполняется еженедельно на SSJ-100.",
+    "category": "ROUTE",
+    "eventType": "route_opened",
+    "airline": "Red Wings",
+    "eventDate": "2026-04-14",
+    "detectedAt": "2026-04-14",
+    "status": "verified",
+    "isHistorical": true,
+    "confidence": "high",
+    "route": {
+      "originName": "Екатеринбург",
+      "destinationName": "Ургенч",
+      "origin": { "latitude": 56.7431, "longitude": 60.8027 },
+      "destination": { "latitude": 41.5843, "longitude": 60.6417 },
+      "mapVisible": false
+    },
+    "sources": [
+      {
+        "name": "Red Wings — пресс-релиз",
+        "url": "https://flyredwings.com/press/news/red-wings-otkryvaet-novyj-marshrut-iz-ekaterinburga-v-uzbekistan/",
+        "publishedAt": "2026-03-12",
+        "kind": "Первичный источник: перевозчик"
+      },
+      {
+        "name": "Tonkosti.ru — первый рейс",
+        "url": "https://tonkosti.ru/Новости/Red_Wings_начала_летать_из_Екатеринбурга_в_Ургенч",
+        "publishedAt": "2026-04-14",
+        "kind": "Независимое подтверждение запуска"
+      }
+    ]
+  },
+  {
+    "id": "s7-novosibirsk-colombo-announced-2026-08-27",
+    "title": "S7 объявила рейсы Новосибирск — Коломбо на зимний сезон",
+    "description": "Продажа билетов открыта на рейсы с 20 декабря 2026 года. По сообщению S7, Airbus A320 будет выполнять перелёт с технической посадкой в Джайпуре. Это подтверждённое объявление о будущем расписании, а не отметка о выполненном первом рейсе.",
+    "category": "ROUTE",
+    "eventType": "airline_announcement",
+    "airline": "S7 Airlines",
+    "eventDate": "2026-08-25",
+    "detectedAt": "2026-08-27",
+    "status": "verified",
+    "isHistorical": false,
+    "confidence": "high",
+    "route": {
+      "originName": "Новосибирск",
+      "destinationName": "Коломбо",
+      "plannedStartDate": "2026-12-20",
+      "aircraftType": "Airbus A320",
+      "mapVisible": false
+    },
+    "sources": [
+      {
+        "name": "S7 Airlines — новости",
+        "url": "https://www.s7.ru/ru/flight/S7-5809/",
+        "publishedAt": "2026-08-27",
+        "kind": "Первичный источник: перевозчик"
+      },
+      {
+        "name": "РБК Новосибирск — расписание нового направления",
+        "url": "https://nsk.rbc.ru/nsk/25/08/2026/6a8d231a9a794767e18802bb",
+        "publishedAt": "2026-08-25",
+        "kind": "Независимая публикация"
+      }
+    ]
+  },
+  {
+    "id": "red-wings-belavia-codeshare-expanded-2026-09-02",
+    "title": "Red Wings и Belavia расширили код-шеринговую сеть",
+    "description": "С 1 сентября 2026 года пассажирам стали доступны дополнительные поездки в Минск из российских городов с пересадками в Екатеринбурге, Санкт-Петербурге и Махачкале. На отдельных участках рейсы выполняют разные перевозчики; это расширение совместных продаж, а не запуск всех перечисленных прямых маршрутов.",
+    "category": "ROUTE",
+    "eventType": "codeshare_expanded",
+    "airline": "Red Wings",
+    "eventDate": "2026-09-01",
+    "detectedAt": "2026-09-02",
+    "status": "verified",
+    "isHistorical": true,
+    "confidence": "high",
+    "route": { "originName": "Регионы России", "destinationName": "Минск", "mapVisible": false },
+    "sources": [
+      { "name": "Red Wings — пресс-релиз", "url": "https://flyredwings.com/en/press/news/red-wings-i-belavia-rasshiryayut-marshrutnuyu-set-v-ramkax-kod-sheringa/", "publishedAt": "2026-09-02", "kind": "Первичный источник: перевозчик" },
+      { "name": "БЕЛТА — сообщение со ссылкой на пресс-службу Belavia", "url": "https://belrus.ru/info/bolshe-marshrutov-i-edinyy-bilet-belavia-i-red-wings-rasshiryayut-sotrudnichestvo/", "publishedAt": "2026-09-02", "kind": "Независимое подтверждение со ссылкой на партнёра" }
+    ]
+  },
+  {
+    "id": "s7-tango-livery-design-competition-2026-10-01",
+    "title": "S7 Group открыла конкурс на дизайн ливреи самолёта «Танго»",
+    "description": "Минтранс, Российский университет транспорта и S7 Group пригласили студентов разработать оформление учебно-тренировочного самолёта «Танго». Это конкурс проектов окраски; новая ливрея пока не нанесена на самолёт.",
+    "category": "LIVERY",
+    "eventType": "livery_design_competition",
+    "airline": "S7 Group",
+    "eventDate": "2026-10-01",
+    "detectedAt": "2026-10-01",
+    "status": "verified",
+    "isHistorical": false,
+    "confidence": "high",
+    "sources": [
+      { "name": "Минтранс России — объявление конкурса", "url": "https://mintrans.gov.ru/eye/press-center/news/13014", "publishedAt": "2026-10-01", "kind": "Первичный государственный источник" },
+      { "name": "Новосибирские новости — конкурс для Tango", "url": "https://nsknews.info/news/pridumat-livreiu-dlia-novogo-samoleta-tango-predlozila-novosibircam-s7", "publishedAt": "2026-10-01", "kind": "Независимое региональное подтверждение" }
+    ]
+  },
+  {
+    "id": "red-wings-roman-chuev-ceo-2026-10-30",
+    "title": "Роман Чуев назначен генеральным директором Red Wings",
+    "description": "30 октября 2026 года Red Wings объявила о назначении Романа Чуева. Он сменил Игоря Ивлиева, который исполнял обязанности руководителя в переходный период и продолжит работу в компании.",
+    "category": "BUSINESS",
+    "eventType": "executive_appointment",
+    "airline": "Red Wings",
+    "eventDate": "2026-10-30",
+    "detectedAt": "2026-10-30",
+    "status": "verified",
+    "isHistorical": false,
+    "confidence": "high",
+    "sources": [
+      { "name": "Red Wings — официальный пресс-релиз", "url": "https://flyredwings.com/press/news/roman-chuev-stal-generalnym-direktorom-red-wings/", "publishedAt": "2026-10-30", "kind": "Первичный источник: авиакомпания" },
+      { "name": "РБК — назначение руководителя Red Wings", "url": "https://www.rbc.ru/rbcfreenews/6ae4759fbd85941c9fdd5b29?from=short_news", "publishedAt": "2026-10-30", "kind": "Независимое деловое издание" }
+    ]
+  },
+  {
+    "id": "red-wings-tu214-ra64549-2025-09-08",
+    "title": "Red Wings ввела в эксплуатацию восстановленный Ту-214 RA-64549",
+    "description": "Самолёт прошёл восстановление лётной годности и получил сертификат. Перевозчик сообщил, что борт пополнил его парк и планировался к рейсам в Грузию и Израиль.",
+    "category": "FLEET",
+    "eventType": "aircraft_entered_service",
+    "airline": "Red Wings",
+    "eventDate": "2025-09-08",
+    "detectedAt": "2025-09-08",
+    "status": "verified",
+    "isHistorical": true,
+    "confidence": "high",
+    "aircraft": { "type": "Ту-214", "registration": "RA-64549" },
+    "sources": [
+      { "name": "Red Wings — официальный пресс-релиз", "url": "https://flyredwings.com/press/news/v-park-samoletov-red-wings-postupil-vtoroj-obnovlennyj-tu-214/", "publishedAt": "2025-09-08", "kind": "Первичный источник: авиакомпания" },
+      { "name": "Интерфакс — Red Wings получила второй Ту-214", "url": "https://www.interfax.ru/amp/1046111", "publishedAt": "2025-09-08", "kind": "Независимое информагентство" }
+    ]
+  }
+]
