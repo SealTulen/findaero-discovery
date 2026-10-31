@@ -5,7 +5,7 @@
   "scripts": {
     "predev": "node scripts/validate-news.mjs && node generate-assets.mjs",
     "dev": "next dev",
-    "prebuild": "node scripts/validate-news.mjs && node generate-assets.mjs",
+    "prebuild": "prisma generate && node scripts/validate-news.mjs && node generate-assets.mjs",
     "build": "next build --webpack",
     "postbuild": "node scripts/validate-export.mjs",
     "start": "next start",
