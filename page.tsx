@@ -1,6 +1,6 @@
 "use client";
 
-import { createElement, useEffect, useMemo, useState } from "react";
+import { createElement, useEffect, useMemo, useRef, useState } from "react";
 import {
   Activity, ArrowDownUp, ArrowRight, Bell, ChevronDown, CircleHelp,
   Clock3, Compass, Database, Plane, Radio, Search, ShieldCheck,
@@ -24,28 +24,34 @@ const airlines = ["Аэрофлот", "Россия", "Победа", "S7 Airlin
 
 function AircraftModel({ src, alt }: { src: string; alt: string }) {
   const [viewerReady, setViewerReady] = useState(false);
+  const [modelState, setModelState] = useState<"loading" | "loaded" | "failed">("loading");
+  const viewerRef = useRef<HTMLElement | null>(null);
   useEffect(() => {
-    if (customElements.get("model-viewer")) { setViewerReady(true); return; }
-    let script = document.querySelector<HTMLScriptElement>("script[data-aircraft-model-viewer]");
-    if (!script) {
-      script = document.createElement("script");
-      script.type = "module";
-      script.src = "https://ajax.googleapis.com/ajax/libs/model-viewer/4.4.0/model-viewer.min.js";
-      script.dataset.aircraftModelViewer = "true";
-      document.head.appendChild(script);
-    }
-    const ready = () => setViewerReady(true);
-    script.addEventListener("load", ready);
-    customElements.whenDefined("model-viewer").then(ready);
-    return () => script?.removeEventListener("load", ready);
+    let active = true;
+    import("@google/model-viewer")
+      .then(() => customElements.whenDefined("model-viewer"))
+      .then(() => { if (active) setViewerReady(true); })
+      .catch(() => { if (active) setModelState("failed"); });
+    return () => { active = false; };
   }, []);
-  if (!viewerReady) return <div className="aircraft-model-loading"><span/><small>ЗАГРУЖАЕМ 3D-МОДЕЛЬ</small></div>;
-  const ModelViewer = "model-viewer" as any;
-  return createElement(ModelViewer, {
+  useEffect(() => {
+    const viewer = viewerRef.current;
+    if (!viewer || !viewerReady) return;
+    const onLoad = () => setModelState("loaded");
+    const onError = () => setModelState("failed");
+    viewer.addEventListener("load", onLoad);
+    viewer.addEventListener("error", onError);
+    return () => { viewer.removeEventListener("load", onLoad); viewer.removeEventListener("error", onError); };
+  }, [viewerReady, src]);
+  if (modelState === "failed") return <div className="aircraft-model-loading aircraft-model-error" role="status"><Plane size={24}/><small>3D-МОДЕЛЬ НЕ ЗАГРУЗИЛАСЬ</small></div>;
+  if (!viewerReady) return <div className="aircraft-model-loading" aria-label="Загрузка 3D-просмотрщика"><span/><small>ЗАГРУЖАЕМ 3D-ПРОСМОТРЩИК</small></div>;
+  return createElement("model-viewer", {
+    ref: viewerRef,
     className: "aircraft-model-viewer", src, alt,
     "camera-controls": "true", "auto-rotate": "true", "rotation-per-second": "7deg",
     "camera-orbit": "35deg 68deg auto", "field-of-view": "27deg",
     "shadow-intensity": "0.8", exposure: "1.1", "interaction-prompt": "none", "touch-action": "pan-y",
+    "aria-label": alt,
   });
 }
 

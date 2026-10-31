@@ -1,0 +1,20 @@
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: findaero
+      POSTGRES_USER: findaero
+      POSTGRES_PASSWORD: findaero_local_only
+    ports:
+      - "5432:5432"
+    volumes:
+      - findaero-postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U findaero -d findaero"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  findaero-postgres:
