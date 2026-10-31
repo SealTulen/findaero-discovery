@@ -2,7 +2,7 @@ import { mkdir, writeFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
-const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
+const root = dirname(fileURLToPath(import.meta.url));
 const mapUrl = "https://raw.githubusercontent.com/AshKyd/geojson-regions/main/public/countries/50m/RUS.geojson";
 const planeUrl = "https://raw.githubusercontent.com/amvlab/aircraft-models/main/models/A320_nologo.glb";
 const mapPath = resolve(root, "public/maps/russia.svg");
