@@ -1,0 +1,262 @@
+generator client {
+  provider = "prisma-client"
+  output   = "./generated"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum EventCategory {
+  FLEET
+  LIVERY
+  ROUTE
+  AIRPORT
+  BUSINESS
+}
+
+enum VerificationStatus {
+  pending
+  verified
+  rejected
+  needs_more_information
+}
+
+enum ConfidenceLevel {
+  low
+  medium
+  high
+}
+
+enum RouteStatus {
+  planned
+  active
+  seasonal
+  closed
+  unknown
+}
+
+enum SourceStatus {
+  not_configured
+  active
+  unsupported
+  error
+}
+
+enum SourceType {
+  airline
+  airport
+  government
+  schedule
+  media
+  other
+}
+
+enum ImportStatus {
+  running
+  completed
+  failed
+}
+
+model Airline {
+  id             String    @id @default(cuid())
+  name           String
+  slug           String    @unique
+  iataCode       String?   @unique @map("iata_code")
+  icaoCode       String?   @unique @map("icao_code")
+  officialWebsite String?  @map("official_website")
+  description    String?
+  logo           String?
+  createdAt      DateTime  @default(now()) @map("created_at")
+  updatedAt      DateTime  @updatedAt @map("updated_at")
+  aircraft       Aircraft[] @relation("CurrentAirline")
+  routes         Route[]
+  liveries       Livery[]
+  events         Event[]
+
+  @@index([name])
+  @@map("airlines")
+}
+
+model Aircraft {
+  id                     String    @id @default(cuid())
+  registration           String?   @unique
+  manufacturerSerialNumber String? @map("manufacturer_serial_number")
+  aircraftType           String?   @map("aircraft_type")
+  manufacturer           String?
+  productionYear         Int?      @map("production_year")
+  currentAirlineId       String?   @map("current_airline_id")
+  createdAt              DateTime  @default(now()) @map("created_at")
+  updatedAt              DateTime  @updatedAt @map("updated_at")
+  currentAirline         Airline?  @relation("CurrentAirline", fields: [currentAirlineId], references: [id], onDelete: SetNull)
+  events                 Event[]
+  liveries               Livery[]
+
+  @@index([aircraftType])
+  @@index([currentAirlineId])
+  @@map("aircraft")
+}
+
+model Airport {
+  id          String   @id @default(cuid())
+  name        String
+  iataCode    String?  @unique @map("iata_code")
+  icaoCode    String?  @unique @map("icao_code")
+  city        String?
+  country     String?
+  latitude    Decimal? @db.Decimal(9, 6)
+  longitude   Decimal? @db.Decimal(9, 6)
+  createdAt   DateTime @default(now()) @map("created_at")
+  events      Event[]
+  origins     Route[]  @relation("RouteOrigin")
+  destinations Route[] @relation("RouteDestination")
+
+  @@index([name])
+  @@index([city])
+  @@map("airports")
+}
+
+model Route {
+  id                  String     @id @default(cuid())
+  airlineId           String     @map("airline_id")
+  originAirportId     String     @map("origin_airport_id")
+  destinationAirportId String    @map("destination_airport_id")
+  aircraftType        String?    @map("aircraft_type")
+  startDate           DateTime?  @db.Date @map("start_date")
+  endDate             DateTime?  @db.Date @map("end_date")
+  status              RouteStatus @default(unknown)
+  createdAt           DateTime   @default(now()) @map("created_at")
+  updatedAt           DateTime   @updatedAt @map("updated_at")
+  airline             Airline    @relation(fields: [airlineId], references: [id], onDelete: Restrict)
+  origin              Airport    @relation("RouteOrigin", fields: [originAirportId], references: [id], onDelete: Restrict)
+  destination         Airport    @relation("RouteDestination", fields: [destinationAirportId], references: [id], onDelete: Restrict)
+  events              Event[]
+
+  @@unique([airlineId, originAirportId, destinationAirportId, startDate], map: "routes_identity_key")
+  @@index([status, startDate], map: "routes_status_date_idx")
+  @@map("routes")
+}
+
+model Livery {
+  id          String    @id @default(cuid())
+  airlineId   String    @map("airline_id")
+  aircraftId  String?   @map("aircraft_id")
+  name        String
+  category    String
+  description String?
+  firstSeenAt DateTime? @db.Date @map("first_seen_at")
+  lastSeenAt  DateTime? @db.Date @map("last_seen_at")
+  imageUrl    String?   @map("image_url")
+  imageAuthor String?   @map("image_author")
+  imageLicense String?  @map("image_license")
+  sourceId    String?   @map("source_id")
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime  @updatedAt @map("updated_at")
+  airline     Airline   @relation(fields: [airlineId], references: [id], onDelete: Restrict)
+  aircraft    Aircraft? @relation(fields: [aircraftId], references: [id], onDelete: SetNull)
+  source      Source?   @relation(fields: [sourceId], references: [id], onDelete: SetNull)
+
+  @@index([airlineId, firstSeenAt])
+  @@index([aircraftId])
+  @@map("liveries")
+}
+
+model Event {
+  id                 String             @id @default(cuid())
+  title              String
+  slug               String             @unique
+  description        String
+  category           EventCategory
+  eventType          String             @map("event_type")
+  airlineId          String?            @map("airline_id")
+  aircraftId         String?            @map("aircraft_id")
+  airportId          String?            @map("airport_id")
+  routeId            String?            @map("route_id")
+  eventDate          DateTime?          @db.Date @map("event_date")
+  detectedAt         DateTime           @default(now()) @map("detected_at")
+  publishedAt        DateTime?          @map("published_at")
+  verificationStatus VerificationStatus @default(pending) @map("verification_status")
+  isHistorical       Boolean            @default(false) @map("is_historical")
+  confidenceLevel    ConfidenceLevel    @default(medium) @map("confidence_level")
+  dedupeKey          String?            @unique @map("dedupe_key")
+  createdAt          DateTime           @default(now()) @map("created_at")
+  updatedAt          DateTime           @updatedAt @map("updated_at")
+  airline            Airline?           @relation(fields: [airlineId], references: [id], onDelete: SetNull)
+  aircraft           Aircraft?          @relation(fields: [aircraftId], references: [id], onDelete: SetNull)
+  airport            Airport?           @relation(fields: [airportId], references: [id], onDelete: SetNull)
+  route              Route?             @relation(fields: [routeId], references: [id], onDelete: SetNull)
+  sources            EventSource[]
+  moderationLogs     ModerationLog[]
+
+  @@index([verificationStatus, eventDate(sort: Desc)], map: "events_status_date_idx")
+  @@index([category, verificationStatus, eventDate(sort: Desc)], map: "events_category_status_date_idx")
+  @@index([airlineId, eventDate(sort: Desc)], map: "events_airline_date_idx")
+  @@index([aircraftId])
+  @@index([airportId])
+  @@map("events")
+}
+
+model Source {
+  id            String       @id @default(cuid())
+  name          String
+  url           String       @unique
+  sourceType    SourceType   @map("source_type")
+  status        SourceStatus @default(not_configured)
+  termsUrl      String?      @map("terms_url")
+  lastCheckedAt DateTime?    @map("last_checked_at")
+  limitations   String?
+  createdAt     DateTime     @default(now()) @map("created_at")
+  updatedAt     DateTime     @updatedAt @map("updated_at")
+  events        EventSource[]
+  liveries      Livery[]
+  imports       SourceImport[]
+
+  @@index([status, sourceType])
+  @@map("sources")
+}
+
+model EventSource {
+  id                    String   @id @default(cuid())
+  eventId               String   @map("event_id")
+  sourceId              String   @map("source_id")
+  sourceUrl             String   @map("source_url")
+  sourcePublicationDate DateTime? @map("source_publication_date")
+  sourceExcerpt         String?  @map("source_excerpt")
+  collectedAt           DateTime @default(now()) @map("collected_at")
+  event                 Event    @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  source                Source   @relation(fields: [sourceId], references: [id], onDelete: Restrict)
+
+  @@unique([eventId, sourceId, sourceUrl], map: "event_sources_identity_key")
+  @@index([eventId])
+  @@map("event_sources")
+}
+
+model ModerationLog {
+  id              String   @id @default(cuid())
+  eventId         String   @map("event_id")
+  administratorId String   @map("administrator_id")
+  action          String
+  comment         String?
+  createdAt       DateTime @default(now()) @map("created_at")
+  event           Event    @relation(fields: [eventId], references: [id], onDelete: Restrict)
+
+  @@index([eventId, createdAt(sort: Desc)])
+  @@index([administratorId, createdAt(sort: Desc)])
+  @@map("moderation_logs")
+}
+
+model SourceImport {
+  id               String       @id @default(cuid())
+  sourceId         String       @map("source_id")
+  startedAt        DateTime     @default(now()) @map("started_at")
+  completedAt      DateTime?    @map("completed_at")
+  status           ImportStatus @default(running)
+  recordsProcessed Int          @default(0) @map("records_processed")
+  eventsCreated    Int          @default(0) @map("events_created")
+  errors           Json?
+  source            Source       @relation(fields: [sourceId], references: [id], onDelete: Restrict)
+
+  @@index([sourceId, startedAt(sort: Desc)])
+  @@index([status, startedAt(sort: Desc)])
+  @@map("source_imports")
+}
