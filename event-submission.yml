@@ -1,0 +1,227 @@
+name: Предложить авиационное событие
+about: Отправить подтверждённое изменение для проверки редактором
+title: "Предложение события: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Заявка не публикуется автоматически. Событие попадёт на сайт только после проверки редактором и подтверждения двух источников.
+        Не вставляйте полный текст статей и не прикладывайте изображения без известной лицензии.
+  - type: input
+    id: event_title
+    attributes:
+      label: Название события
+      description: Краткий заголовок на русском языке
+      placeholder: S7 открыла маршрут ...
+    validations:
+      required: true
+  - type: textarea
+    id: event_description
+    attributes:
+      label: Краткое описание
+      description: Перескажите факт своими словами; обозначьте, если это только анонс
+      render: text
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: Категория
+      options:
+        - FLEET — Флот
+        - LIVERY — Ливрея
+        - ROUTE — Маршрут
+        - AIRPORT — Аэропорт
+        - BUSINESS — Бизнес
+    validations:
+      required: true
+  - type: dropdown
+    id: event_type
+    attributes:
+      label: Тип события
+      options:
+        - aircraft_added — aircraft_added
+        - aircraft_removed — aircraft_removed
+        - aircraft_transferred — aircraft_transferred
+        - aircraft_returned_to_service — aircraft_returned_to_service
+        - aircraft_inactive — aircraft_inactive
+        - aircraft_registration_changed — aircraft_registration_changed
+        - aircraft_operator_changed — aircraft_operator_changed
+        - aircraft_delivered — aircraft_delivered
+        - aircraft_entered_service — aircraft_entered_service
+        - aircraft_retired — aircraft_retired
+        - new_special_livery — new_special_livery
+        - new_aircraft_livery — new_aircraft_livery
+        - aircraft_repainted — aircraft_repainted
+        - aircraft_brand_refresh — aircraft_brand_refresh
+        - livery_design_competition — livery_design_competition
+        - livery_removed — livery_removed
+        - promotional_livery — promotional_livery
+        - anniversary_livery — anniversary_livery
+        - route_opened — route_opened
+        - route_announced — route_announced
+        - route_seasonal — route_seasonal
+        - codeshare_expanded — codeshare_expanded
+        - route_closed — route_closed
+        - route_resumed — route_resumed
+        - route_frequency_changed — route_frequency_changed
+        - route_aircraft_changed — route_aircraft_changed
+        - airport_added — airport_added
+        - airport_removed — airport_removed
+        - new_airline_presence — new_airline_presence
+        - airport_base_changed — airport_base_changed
+        - new_contract — new_contract
+        - new_project — new_project
+        - project_delayed — project_delayed
+        - project_cancelled — project_cancelled
+        - project_completed — project_completed
+        - airline_announcement — airline_announcement
+        - executive_appointment — executive_appointment
+    validations:
+      required: true
+  - type: input
+    id: airline
+    attributes:
+      label: Авиакомпания
+      description: Если перевозчика ещё нет в каталоге, редактор создаст профиль без сайта; официальный адрес добавляется только после отдельной проверки.
+      placeholder: Red Wings
+    validations:
+      required: true
+  - type: input
+    id: event_date
+    attributes:
+      label: Дата события
+      description: Формат YYYY-MM-DD. Не ставьте дату публикации вместо даты самого события.
+      placeholder: 2026-11-01
+    validations:
+      required: true
+  - type: input
+    id: aircraft_type
+    attributes:
+      label: Тип самолёта (если известно)
+      placeholder: Airbus A320
+    validations:
+      required: false
+  - type: input
+    id: aircraft_registration
+    attributes:
+      label: Регистрационный номер (если известен)
+      placeholder: RA-00000
+    validations:
+      required: false
+  - type: input
+    id: route_origin
+    attributes:
+      label: Откуда (для маршрута)
+      validations:
+        required: false
+  - type: input
+    id: route_destination
+    attributes:
+      label: Куда (для маршрута)
+      validations:
+        required: false
+  - type: input
+    id: route_start_date
+    attributes:
+      label: Планируемая дата начала (если анонс)
+      placeholder: 2026-12-01
+    validations:
+      required: false
+  - type: input
+    id: origin_latitude
+    attributes:
+      label: Широта отправления (для карты, необязательно)
+      placeholder: "55.0126"
+    validations:
+      required: false
+  - type: input
+    id: origin_longitude
+    attributes:
+      label: Долгота отправления (для карты, необязательно)
+      placeholder: "82.6507"
+    validations:
+      required: false
+  - type: input
+    id: destination_latitude
+    attributes:
+      label: Широта назначения (для карты, необязательно)
+      placeholder: "56.8567"
+    validations:
+      required: false
+  - type: input
+    id: destination_longitude
+    attributes:
+      label: Долгота назначения (для карты, необязательно)
+      placeholder: "105.7294"
+    validations:
+      required: false
+  - type: input
+    id: source_1_name
+    attributes:
+      label: Источник 1 — название
+    validations:
+      required: true
+  - type: input
+    id: source_1_url
+    attributes:
+      label: Источник 1 — HTTPS ссылка
+      placeholder: https://example.org/news
+    validations:
+      required: true
+  - type: input
+    id: source_1_date
+    attributes:
+      label: Источник 1 — дата публикации
+      placeholder: 2026-11-01
+    validations:
+      required: true
+  - type: dropdown
+    id: source_1_kind
+    attributes:
+      label: Источник 1 — тип
+      options:
+        - Первичный источник: авиакомпания
+        - Первичный государственный источник
+        - Независимое информационное агентство
+        - Отраслевое или региональное СМИ
+    validations:
+      required: true
+  - type: input
+    id: source_2_name
+    attributes:
+      label: Источник 2 — название
+    validations:
+      required: true
+  - type: input
+    id: source_2_url
+    attributes:
+      label: Источник 2 — HTTPS ссылка
+      placeholder: https://example.org/confirmation
+    validations:
+      required: true
+  - type: input
+    id: source_2_date
+    attributes:
+      label: Источник 2 — дата публикации
+      placeholder: 2026-11-01
+    validations:
+      required: true
+  - type: dropdown
+    id: source_2_kind
+    attributes:
+      label: Источник 2 — тип
+      options:
+        - Первичный источник: авиакомпания
+        - Первичный государственный источник
+        - Независимое информационное агентство
+        - Отраслевое или региональное СМИ
+    validations:
+      required: true
+  - type: checkboxes
+    id: rights
+    attributes:
+      label: Проверка материалов
+      options:
+        - label: Я добавил(а) только краткое описание своими словами и ссылки, а не скопированный текст или чужое изображение.
+          required: true

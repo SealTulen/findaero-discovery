@@ -6,3 +6,5 @@ prisma/generated/
 .env.*
 !.env.example
 npm-debug.log*
+/reports/source-health.json
+/public/source-health.json

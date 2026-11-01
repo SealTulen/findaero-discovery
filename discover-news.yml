@@ -1,0 +1,32 @@
+name: Daily aviation news discovery
+
+on:
+  schedule:
+    - cron: "37 5 * * *"
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: news-discovery
+  cancel-in-progress: false
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      issues: write
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Discover RSS candidates for private editorial review
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: node scripts/discover-news.mjs
