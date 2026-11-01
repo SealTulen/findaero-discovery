@@ -3,7 +3,7 @@ import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = dirname(fileURLToPath(import.meta.url));
-const mapUrl = "https://raw.githubusercontent.com/AshKyd/geojson-regions/main/public/countries/50m/RUS.geojson";
+const mapUrl = "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_50m_admin_0_countries.geojson";
 const planeUrl = "https://raw.githubusercontent.com/amvlab/aircraft-models/main/models/A320_nologo.glb";
 const mapPath = resolve(root, "public/maps/russia.svg");
 const planePath = resolve(root, "public/models/A320_nologo.glb");
@@ -45,8 +45,9 @@ await mkdir(dirname(planePath), { recursive: true });
 
 if (!(await isUsable(mapPath, (bytes) => new TextDecoder().decode(bytes).includes("<svg")))) {
   const mapBytes = await fetchBytes(mapUrl, "Russia outline");
-  const feature = JSON.parse(new TextDecoder().decode(mapBytes));
-  if (!feature.geometry?.coordinates) throw new Error("Russia outline source has no geometry");
+  const collection = JSON.parse(new TextDecoder().decode(mapBytes));
+  const feature = collection.features?.find((item) => item.properties?.ADM0_A3 === "RUS");
+  if (!feature?.geometry?.coordinates) throw new Error("Russia outline source has no geometry");
   const mapSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 360"><path d="${geometryPaths(feature.geometry)}" fill="#183247" stroke="#6c9fbd" stroke-width="1.15" fill-rule="evenodd" vector-effect="non-scaling-stroke"/></svg>`;
   await writeFile(mapPath, mapSvg, "utf8");
 }
