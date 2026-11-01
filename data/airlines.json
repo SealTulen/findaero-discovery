@@ -1,0 +1,21 @@
+[
+  { "slug": "aeroflot", "name": "Аэрофлот", "officialWebsite": "https://www.aeroflot.ru/" },
+  { "slug": "rossiya", "name": "Россия", "officialWebsite": "https://www.rossiya-airlines.ru/" },
+  { "slug": "pobeda", "name": "Победа", "officialWebsite": "https://www.flypobeda.ru/" },
+  { "slug": "s7-airlines", "name": "S7 Airlines", "eventAliases": ["S7 Group"], "officialWebsite": "https://www.s7.ru/" },
+  { "slug": "utair", "name": "UTair", "officialWebsite": "https://www.utair.ru/" },
+  { "slug": "nordwind", "name": "Nordwind", "officialWebsite": "https://nordwindairlines.ru/" },
+  { "slug": "smartavia", "name": "Smartavia", "officialWebsite": "https://flysmartavia.com/" },
+  { "slug": "red-wings", "name": "Red Wings", "officialWebsite": "https://flyredwings.com/" },
+  { "slug": "azur-air", "name": "Azur Air", "officialWebsite": "https://azurair.ru/" },
+  { "slug": "ural-airlines", "name": "Уральские авиалинии", "officialWebsite": "https://www.uralairlines.ru/" },
+  { "slug": "yamal", "name": "Ямал", "officialWebsite": "https://yamalaero.ru/" },
+  { "slug": "severstal", "name": "Северсталь", "officialWebsite": "https://severstal-avia.ru/" },
+  { "slug": "alrosa", "name": "Алроса", "officialWebsite": "https://www.alrosa.aero/" },
+  { "slug": "izhavia", "name": "Ижавиа", "officialWebsite": "https://izhavia.su/" },
+  { "slug": "gazprom-avia", "name": "Газпром авиа" },
+  { "slug": "rusline", "name": "РусЛайн", "officialWebsite": "https://www.rusline.aero/" },
+  { "slug": "krasavia", "name": "КрасАвиа", "officialWebsite": "https://www.krasavia.ru/" },
+  { "slug": "iraero", "name": "IRAERO", "officialWebsite": "https://iraero.ru/" },
+  { "slug": "yuvt-aero", "name": "ЮВТ АЭРО", "eventAliases": ["UVT Aero"], "officialWebsite": "https://uvtaero.ru/" }
+]
